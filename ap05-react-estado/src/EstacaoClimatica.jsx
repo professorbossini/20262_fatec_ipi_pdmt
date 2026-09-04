@@ -1,6 +1,27 @@
 // rcc
 import React, { Component } from 'react'
 export default class EstacaoClimatica extends Component {
+  
+  state = {
+    data: null
+  }
+  
+  timer = null
+
+  componentDidMount(){
+    console.log('componentDidMount')
+    this.timer = setInterval(() => {
+      this.setState({
+        data: new Date().toLocaleTimeString()
+      })
+    }, 1000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timer)
+  }
+
+
   render() {
     return (
       <div className="card">
@@ -8,27 +29,24 @@ export default class EstacaoClimatica extends Component {
           <div
             style={{ height: '6rem' }}
             className="d-flex align-items-center border rounded mb-2">
-            <i className={`fa-solid fa-5x ${this.state.icone}`}></i>
+            <i className={`fa-solid fa-5x ${this.props.icone}`}></i>
             <p className="w-75 ms-3 text-center fs-1">
-              {this.state.estacao}
+              {this.props.estacao}
             </p>
           </div>
           <div>
             <p className="text-center">
               {
-                this.state.latitude ?
-                  `Coordenadas: ${this.state.latitude},${this.state.longitude}. Data: ${this.state.data}.`
-                  :
-                  this.state.mensagemDeErro ?
-                    `Tente novamente mais tarde`
-                    :
-                    `Clique no botão para saber a sua estação climática`
+                this.props.latitude ?
+                  `Coordenadas: ${this.props.latitude},${this.props.longitude}. Data: ${this.state.data}.`
+                :
+                  `Clique no botão para saber a sua estação climática`
               }
             </p>
           </div>
           <button
             className='btn btn-outline-primary w-100 mt-2'
-            onClick={this.obterLocalizacao}>
+            onClick={this.props.obterLocalizacao}>
             Qual a minha estação?
           </button>
           <button
