@@ -7,7 +7,8 @@ class App extends React.Component {
       longitude: null,
       estacao: null,
       data: null,
-      icone: null
+      icone: null,
+      mensagemDeErro: null
     }
   }
   render(){
@@ -31,7 +32,10 @@ class App extends React.Component {
                       this.state.latitude ?
                         `Coordenadas: ${this.state.latitude},${this.state.longitude}. Data: ${this.state.data}.`
                       :
-                      `Clique no botão para saber a sua estação climática`
+                        this.state.mensagemDeErro ?
+                        `Tente novamente mais tarde`
+                      :
+                        `Clique no botão para saber a sua estação climática`
                     }
                   </p>
                 </div>
@@ -92,6 +96,10 @@ class App extends React.Component {
       }, 
       (erro) => {
         console.log(`Erro: ${erro}`)
+        //quero atualizar a variável de mensagem de erro com "Tente novamente mais tarde"
+        this.setState({
+          mensagemDeErro: 'Tente novamente mais tarde'
+        })
       }
     )
   }
