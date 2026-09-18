@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { PrimeReactProvider } from '@primereact/core'
 import Aura from '@primeuix/themes/aura'
+import 'primeflex/primeflex.min.css'
 
 const primereact = {
   theme: {
