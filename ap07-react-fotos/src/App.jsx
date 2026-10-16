@@ -37,7 +37,7 @@ export default class App extends React.Component {
 
 
 
-  render(){
+  render(){ 
     return (
       <div className="grid justify-content-center w-9 m-auto">
         <div className='col-12'>
