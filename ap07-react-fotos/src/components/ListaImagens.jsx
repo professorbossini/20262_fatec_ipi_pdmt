@@ -3,10 +3,12 @@
 //chamar a função map sobre essa lista e, para cada item, produzir um componente do tipo Imagem, que é esse que a gente acabou de criar
 import Imagem from './Imagem'
 
-const ListaImagens = ({photos}) => {
+const ListaImagens = ({photos, imgStyle}) => {
   return (
     photos.map((photo, key) => (
-      <Imagem src={photo.src.small} alt={photo.alt}/>
+      <Imagem
+        imgStyle={imgStyle} 
+        src={photo.src.small} alt={photo.alt}/>
     ))
   )
 }

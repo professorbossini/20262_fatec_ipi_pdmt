@@ -1,8 +1,11 @@
 // rafce
-const Imagem = ({ src, alt }) => {
+const Imagem = ({ src, alt, imgStyle }) => {
   return (
-    <div>
-      <img src={src} alt={alt}/>
+    <div className={`${imgStyle} flex justify-content-center`}>
+      <img
+        className="border-round" 
+        src={src} 
+        alt={alt}/>
     </div>
   )
 }
